@@ -12,7 +12,7 @@ license = "MIT"
 readme = "README.md"
 keywords = ["disk-usage", "tui", "treemap", "sunburst", "cli"]
 categories = ["command-line-utilities", "filesystem", "visualization"]
-exclude = ["assets/*.ppm", "assets/*.tape", "/.github"]
+exclude = ["/assets", "/.github"]
 
 [dependencies]
 anyhow = "1.0.104"
