@@ -189,10 +189,8 @@ fn handle_key(state: &mut App, k: event::KeyEvent) {
             let n = state.current().children.len();
             state.sel = n.saturating_sub(1);
         }
-        KeyCode::Char('d') | KeyCode::Delete => {
-            if state.selected().is_some() {
-                state.confirm = Some(state.sel);
-            }
+        KeyCode::Char('d') | KeyCode::Delete if state.selected().is_some() => {
+            state.confirm = Some(state.sel);
         }
         _ => {}
     }

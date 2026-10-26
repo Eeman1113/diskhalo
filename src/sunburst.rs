@@ -345,17 +345,18 @@ pub fn draw(canvas: &mut Canvas, r: &Rings, inner: f64, selected: Option<usize>,
                 // true colour; coverage then alpha-blends it against the real
                 // background. Averaging over all samples instead would darken
                 // every pixel touching a ring separator and speckle the interior.
-                let mean = (acc.0 / hits, acc.1 / hits, acc.2 / hits);
-                let cov = hits as f64 / (SS * SS) as f64;
-                let mix = |fgc: u32, bgc: u8| -> u8 {
-                    (bgc as f64 + (fgc as f64 - bgc as f64) * cov)
+                let n = f64::from(hits);
+                let cov = n / (SS * SS) as f64;
+                let mix = |sum: u32, bgc: u8| -> u8 {
+                    let fgc = f64::from(sum) / n;
+                    (f64::from(bgc) + (fgc - f64::from(bgc)) * cov)
                         .round()
                         .clamp(0.0, 255.0) as u8
                 };
                 canvas.set(
                     px,
                     py,
-                    Rgb(mix(mean.0, bg.0), mix(mean.1, bg.1), mix(mean.2, bg.2)),
+                    Rgb(mix(acc.0, bg.0), mix(acc.1, bg.1), mix(acc.2, bg.2)),
                 );
             }
         }
