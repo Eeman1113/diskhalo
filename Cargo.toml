@@ -1,0 +1,28 @@
+[package]
+name = "diskhalo"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.82"
+authors = ["Eeman Majumder <eeman.majumder@gmail.com>"]
+description = "See what's eating your disk — as a sunburst or a treemap, in your terminal."
+repository = "https://github.com/Eeman1113/diskhalo"
+homepage = "https://github.com/Eeman1113/diskhalo"
+documentation = "https://docs.rs/diskhalo"
+license = "MIT"
+readme = "README.md"
+keywords = ["disk-usage", "tui", "treemap", "sunburst", "cli"]
+categories = ["command-line-utilities", "filesystem", "visualization"]
+exclude = ["assets/*.ppm", "assets/*.tape", "/.github"]
+
+[dependencies]
+anyhow = "1.0.104"
+clap = { version = "4.6.7", features = ["derive"] }
+crossterm = "0.29.0"
+ratatui = "0.30.2"
+rayon = "1.12.0"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = true
