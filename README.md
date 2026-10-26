@@ -6,7 +6,6 @@
 
 <p align="center">
   <a href="https://github.com/Eeman1113/diskhalo/actions/workflows/ci.yml"><img src="https://github.com/Eeman1113/diskhalo/actions/workflows/ci.yml/badge.svg" alt="ci"></a>
-  <a href="https://crates.io/crates/diskhalo"><img src="https://img.shields.io/crates/v/diskhalo.svg" alt="crates.io"></a>
   <a href="#license"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT"></a>
 </p>
 
@@ -36,10 +35,10 @@ Same scan, same keys, `tab` to switch.
 brew install Eeman1113/tap/diskhalo
 
 # Cargo
-cargo install diskhalo
+cargo install --git https://github.com/Eeman1113/diskhalo
 ```
 
-Or grab a binary from [releases](https://github.com/Eeman1113/diskhalo/releases).
+Or grab the universal macOS binary (arm64 + x86_64) from [releases](https://github.com/Eeman1113/diskhalo/releases) — macOS quarantines downloaded binaries, so clear it with `xattr -d com.apple.quarantine diskhalo`.
 
 ## Use
 
